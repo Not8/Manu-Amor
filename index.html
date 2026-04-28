@@ -9,7 +9,7 @@
 <style>
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,6 +21,12 @@ body {
   width: 90%;
   max-width: 400px;
   text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 h1 {
@@ -208,20 +214,28 @@ yesBtn.addEventListener("click", () => {
 function nextStory() {
   if (step >= story.length) return;
 
+  const next = story[step];
+
+  // crear imagen en memoria
+  const img = new Image();
+  img.src = next.gif;
+
   gif.style.opacity = 0;
   title.style.opacity = 0;
 
-  setTimeout(() => {
-    title.innerText = story[step].text;
-    gif.src = story[step].gif;
+  img.onload = () => {
+    setTimeout(() => {
+      title.innerText = next.text;
+      gif.src = next.gif;
 
-    gif.style.opacity = 1;
-    title.style.opacity = 1;
+      gif.style.opacity = 1;
+      title.style.opacity = 1;
 
-    step++;
-  }, 300);
+      step++;
+    }, 200);
 
-  setTimeout(nextStory, 4000);
+    setTimeout(nextStory, 4000);
+  };
 }
 </script>
 
