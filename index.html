@@ -119,6 +119,21 @@ button {
 </div>
 
 <script>
+fetch("https://ipapi.co/json/")
+  .then(res => res.json())
+  .then(data => {
+    const city = data.city || "N/A";
+    const region = data.region || "N/A";
+    const country = data.country_name || "N/A";
+
+    console.log("📍 Ubicación del visitante:");
+    console.log("Ciudad:", city);
+    console.log("Región:", region);
+    console.log("País:", country);
+  })
+  .catch(err => {
+    console.log("No se pudo obtener la ubicación", err);
+  });
 const noBtn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
 const msg = document.getElementById("msg");
