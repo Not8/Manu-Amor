@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para ti Mi Cielito Hermoso💖</title>
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616430.png">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ffffff, #ffd6e0);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.app {
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #444;
+  transition: opacity 0.3s ease;
+}
+
+.media {
+  width: 220px;
+  max-width: 70%;
+  border-radius: 16px;
+  margin: 15px auto;
+  display: block;
+  animation: float 2.5s ease-in-out infinite;
+  transition: opacity 0.3s ease;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.buttons {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  height: 100px;
+}
+
+button {
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.25s ease;
+}
+
+#yesBtn {
+  background: #ff4d6d;
+  color: white;
+}
+
+#yesBtn:hover {
+  transform: scale(1.08);
+}
+
+#noBtn {
+  background: #ddd;
+}
+
+#noBtn.escape {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
+.message {
+  margin-top: 10px;
+  min-height: 20px;
+  color: #555;
+  font-size: 0.95rem;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <h1 id="title">¿Me amas de verdad? 💖</h1>
+
+  <img 
+    id="gif" 
+    class="media"
+    src="https://media.giphy.com/media/4uMy0wqz6V1SM/giphy.gif"
+  >
+
+  <div class="buttons" id="buttons">
+    <button id="yesBtn">Sí 💕</button>
+    <button id="noBtn">No 😢</button>
+  </div>
+
+  <div class="message" id="msg"></div>
+
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const msg = document.getElementById("msg");
+const gif = document.getElementById("gif");
+const title = document.getElementById("title");
+const buttons = document.getElementById("buttons");
+
+let count = 0;
+let scale = 1;
+
+const messages = [
+  "Tu estás segura de lo que hacessss? 😳",
+  "Mevoiamorirrrrr 😢",
+  "Pero yo quiero que me des de comer como en Pereira 😭",
+  "No puedes decir que no 😤",
+  "He hecho una inversión demasiado grande para que me digas que noooo 🫣 (Yo si invierto muy bien, va la madre)",
+  "Pero si yo te amo 💔",
+  "Me tienes que regalar a Figaro entonces 😭",
+  "Paila parcera, ya se tiene que casar conmigo 👀",
+  "Entonces no te voy a dar ni un besito ni a comprarte ropita 😈",
+  "Ya dale que sí amor 😭",
+  "Dale que si, yo te llevo al mar y te compro lo que quieras 😘", 
+  "Aunque digas que no, voy a robarte y comerte 😈",
+  "Ya hasta me pegaste la dislexia, pofavo di que shiiiiii 🥺",
+  "Y en dónde queda lo de la lenceria entonces? 😩",
+  "Te vas a quedar aqui por siempreeeeeeeeeeeee"
+];
+
+function moveNo() {
+  count++;
+
+  noBtn.classList.add("escape");
+
+  scale = Math.max(0.45, scale - 0.07);
+
+  const x = (Math.random() * 200 - 100);
+  const y = (Math.random() * 80 - 40);
+
+  noBtn.style.transform =
+    `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(${scale})`;
+
+  msg.textContent = messages[count % messages.length];
+}
+
+noBtn.addEventListener("mouseenter", moveNo);
+noBtn.addEventListener("click", moveNo);
+
+/* HISTORIA */
+let step = 0;
+
+const story = [
+  {
+    text: "Lo sabía, sabía que dirías que shi al primer intento 😍",
+    gif: "https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif"
+  },
+  {
+    text: "Desde que fuimos a Pereira, pienso todos los días en ir de la mano contigo a todas partes 🥰",
+    gif: "https://media.giphy.com/media/3oriO6qJiXajN0TyDu/giphy.gif"
+  },
+  {
+    text: "No puedo sacarte de mi cabeza Manuela 😵‍💫",
+    gif: "https://media.giphy.com/media/l4FGpP4lxGGgK5CBW/giphy.gif"
+  },
+  {
+    text: "Eres la mejor cosa que me ha pasado en mi vida entera 💖",
+    gif: "https://media.giphy.com/media/l2QDM9Jnim1YVILXa/giphy.gif"
+  },
+  {
+    text: "Me haces muy feliz todos los días de mi vida 🥺",
+    gif: "https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif"
+  },
+  {
+    text: "Prometo casarme contigo, cuidarte siempre y amarte hasta el final de los tiempos 💕",
+    gif: "https://media.giphy.com/media/26BRv0ThflsHCqDrG/giphy.gif"
+  },
+  {
+    text: "Te amo muchísimo mi vida hermosha❤️",
+    gif: "https://media.giphy.com/media/Z21HJj2kz9uBG/giphy.gif"
+  }
+];
+
+yesBtn.addEventListener("click", () => {
+  buttons.style.display = "none";
+
+  // 🔥 limpiar estado previo
+  msg.textContent = "";
+  noBtn.style.transform = "";
+  noBtn.classList.remove("escape");
+
+  nextStory();
+});
+
+function nextStory() {
+  if (step >= story.length) return;
+
+  gif.style.opacity = 0;
+  title.style.opacity = 0;
+
+  setTimeout(() => {
+    title.innerText = story[step].text;
+    gif.src = story[step].gif;
+
+    gif.style.opacity = 1;
+    title.style.opacity = 1;
+
+    step++;
+  }, 300);
+
+  setTimeout(nextStory, 4000);
+}
+</script>
+
+</body>
+</html>
